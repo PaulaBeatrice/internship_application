@@ -87,6 +87,6 @@ public class TokenFilter extends OncePerRequestFilter {
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
         String path = request.getServletPath();
-        return path.contains("/login");
+        return path.contains("/login") || path.contains("/internship/") || path.contains("/application/");
     }
 }

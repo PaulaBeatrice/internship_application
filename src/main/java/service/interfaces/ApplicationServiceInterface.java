@@ -22,5 +22,5 @@ public interface ApplicationServiceInterface {
      * @param user The user whose applications are to be fetched.
      * @return List of applications by the user.
      */
-    List<Application> getApplicationsByUser(User user) throws ServiceException;
+    List<Application> getApplicationsByUser(Long user) throws ServiceException;
 }

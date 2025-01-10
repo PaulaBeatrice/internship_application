@@ -27,7 +27,7 @@ public class InternshipServiceImpl implements InternshipServiceInterface {
     @Override
     public void addInternship(Internship internship) throws MyException {
         validator.validateAddInternship(internship);
-
+        internshipRepoInterface.save(internship);
     }
 
     @Override

@@ -7,25 +7,22 @@ import model.validator.MyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 import service.ServiceException;
 import service.interfaces.ApplicationServiceInterface;
-import service.interfaces.InternshipServiceInterface;
-import service.interfaces.UserServiceInterface;
+
 
 import java.util.List;
 
+@Controller
+@RequestMapping("/application")
 public class ApplicationController {
     @Autowired
     private ApplicationServiceInterface applicationServiceInterface;
 
-    @Autowired
-    private UserServiceInterface userServiceInterface;
-
     @PostMapping("add/application")
-    public @ResponseBody ResponseEntity<?> addAplication(Application application){
+    public @ResponseBody ResponseEntity<?> addAplication(@RequestBody Application application){
         try {
             applicationServiceInterface.addApplication(application);
             return ResponseEntity.ok(application);
@@ -34,9 +31,9 @@ public class ApplicationController {
         }
     }
 
-    @GetMapping("/get/applications")
-    public @ResponseBody ResponseEntity<?> getApplications(User user) throws ServiceException {
-        List<Application> applications = applicationServiceInterface.getApplicationsByUser(user);
+    @GetMapping("/get/applications/{userId}")
+    public @ResponseBody ResponseEntity<?> getApplications(@PathVariable Long userId) throws ServiceException {
+        List<Application> applications = applicationServiceInterface.getApplicationsByUser(userId);
         return ResponseEntity.ok(applications);
     }
 }

@@ -32,7 +32,7 @@ public class InternshipController {
     }
 
     @PostMapping("add/internship")
-    public @ResponseBody ResponseEntity<?> addInternship(Internship internship){
+    public @ResponseBody ResponseEntity<?> addInternship(@RequestBody Internship internship){
         try {
             internshipServiceInterface.addInternship(internship);
             return ResponseEntity.ok(internship);

@@ -6,8 +6,6 @@ import org.springframework.stereotype.Service;
 import service.ServiceException;
 import service.interfaces.AuthenticationServiceInterface;
 import service.interfaces.UserServiceInterface;
-
-import java.time.LocalDate;
 import java.util.Objects;
 
 /**

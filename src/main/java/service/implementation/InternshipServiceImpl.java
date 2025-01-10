@@ -1,7 +1,6 @@
 package service.implementation;
 
 import model.Internship;
-import model.User;
 import model.validator.MyException;
 import model.validator.Validator;
 import org.springframework.beans.factory.annotation.Autowired;

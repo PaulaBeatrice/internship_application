@@ -1,10 +1,8 @@
 package service.interfaces;
 
 import model.User;
-import org.springframework.stereotype.Service;
 import service.ServiceException;
 
-import java.time.LocalDate;
 
 /**
  * Interface used for authenticating the user or signing up a new user*/

@@ -1,8 +1,6 @@
 package controller;
 
 import model.Application;
-import model.Internship;
-import model.User;
 import model.validator.MyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

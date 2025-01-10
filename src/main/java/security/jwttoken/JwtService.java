@@ -44,14 +44,6 @@ public class JwtService {
      * @return the information stored in the token
      * @param <T> the type of the information stored
      */
-    private <T> T extractClaim(String token, String claimName) {
-            final Claims claims = Jwts.parserBuilder()
-                    .setSigningKey(jwtSigningKey)
-                    .build()
-                    .parseClaimsJws(token)
-                    .getBody();
-            return (T) claims.get(claimName);
-        }
 
     /**
      * function used to generate a new token

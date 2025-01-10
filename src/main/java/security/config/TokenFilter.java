@@ -1,6 +1,5 @@
 package security.config;
 
-import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -40,8 +39,8 @@ public class TokenFilter extends OncePerRequestFilter {
      * @param request the HTTP request which comes to the app
      * @param response the response of the app to the request
      * @param filterChain the chains of filter which still need to be executed
-     * @throws ServletException
-     * @throws IOException
+     * @throws ServletException exception
+     * @throws IOException exception
      */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)

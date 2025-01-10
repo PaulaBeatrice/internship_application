@@ -18,9 +18,6 @@ public class InternshipController {
     @Autowired
     private InternshipServiceInterface internshipServiceInterface;
 
-    @Autowired
-    private UserServiceInterface userServiceInterface;
-
     /**
      * Retrieves all internships.
      * @return ResponseEntity with a list of all internships or an empty list if none are found.

@@ -28,20 +28,10 @@ public class LogInController {
     private AuthenticationServiceInterface authenticationService;
 
     /**
-     * The service used ii order to generate an decode tokens
+     * The service used in order to generate an decode tokens
      */
     @Autowired
     private JwtService jwtService;
-
-    @GetMapping
-    public String login() {
-        return "login";
-    }
-
-    @GetMapping("/register")
-    public String register() {
-        return "register";
-    }
 
     /**
      * @param user: userul ce vrea sa fie logat

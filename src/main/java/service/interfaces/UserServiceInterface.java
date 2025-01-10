@@ -22,12 +22,5 @@ public interface UserServiceInterface {
      */
     User getUserByUsername(String username);
 
-    /**
-     * Function to add a new user in the database
-     * @param username the username of the user
-     * @param password the password of the user
-     * @param email the email of the user
-     * @param type the type of the user
-     */
-    void addUser(String username, String password, String email, User.UserType type);
+    void addUser(User user);
 }

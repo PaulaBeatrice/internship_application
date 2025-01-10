@@ -53,6 +53,6 @@ public class AuthenticationServiceImpl implements AuthenticationServiceInterface
             throw new ServiceException("Username can only contain letters, numbers and _.");
         }
 
-        userService.addUser(username, password, email, type);
+        userService.addUser(new User(username, password, email, type));
     }
 }

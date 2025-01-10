@@ -45,6 +45,13 @@ public class User implements Serializable {
     public User() {
     }
 
+    public User(String username, String password, String email, UserType type) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.userType = type;
+    }
+
     // Enum for user type
     public enum UserType {
         STUDENT,

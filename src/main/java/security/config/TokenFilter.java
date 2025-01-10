@@ -63,12 +63,7 @@ public class TokenFilter extends OncePerRequestFilter {
                     response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 
                 }
-            }
-            catch(ExpiredJwtException e){
-                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                return;
-            }
-            catch (Exception e) {
+            } catch(Exception e){
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                 return;
             }
@@ -92,6 +87,6 @@ public class TokenFilter extends OncePerRequestFilter {
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
         String path = request.getServletPath();
-        return path.contains("/login") || path.contains("/quiz") || path.contains("/userStats");
+        return path.contains("/login");
     }
 }

@@ -7,4 +7,5 @@ import java.util.List;
 public interface InternshipServiceInterface {
     void addInternship(Internship internship) throws MyException;
     List<Internship> getAllInternships();
+    void deleteInternship(Long internshipId);
 }

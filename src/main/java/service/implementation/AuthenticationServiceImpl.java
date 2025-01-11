@@ -26,12 +26,8 @@ public class AuthenticationServiceImpl implements AuthenticationServiceInterface
      *         false else
      */
     @Override
-    public boolean logIn(User user) {
-        User dbUser = userService.getUserByUsername(user.getUsername());
-        if(dbUser == null){
-            return false;
-        }
-        return Objects.equals(dbUser.getPassword(), user.getPassword());
+    public User logIn(User user) {
+        return userService.getUserByUsername(user.getUsername());
     }
     /**
      * Function to add a new user in the database

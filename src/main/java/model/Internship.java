@@ -51,9 +51,8 @@ public class Internship implements Serializable {
     /**
      * Skill requirements for the internship.
      */
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private SkillRequirement skillRequirement;
+    private String skillRequirement;
 
     /**
      * Recruiter associated with the internship.
@@ -63,14 +62,5 @@ public class Internship implements Serializable {
     private User recruiter;
 
     public Internship() {
-    }
-
-    // Enum for skill requirements
-    public enum SkillRequirement {
-        JAVA,
-        PYTHON,
-        JAVASCRIPT,
-        SQL,
-        HTML_CSS
     }
 }

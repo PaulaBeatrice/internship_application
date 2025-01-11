@@ -14,7 +14,6 @@ public class UserServiceImpl implements UserServiceInterface {
 
     @Override
     public User getUserByUsername(String username) {
-        // Implementarea metodei pentru obținerea unui utilizator după username
         return userRepoInterface.findByUsername(username);
     }
 

@@ -13,7 +13,7 @@ public interface AuthenticationServiceInterface {
      * @return true the username and password match with the ones from the database
      *         false else
      */
-    boolean logIn(User user);
+    User logIn(User user);
 
     /**
      * Function to add a new user in the database

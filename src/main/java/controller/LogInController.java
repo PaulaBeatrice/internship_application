@@ -1,5 +1,6 @@
 package controller;
 
+import controller.dto.LoginSuccessfulDto;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import model.User;
@@ -40,11 +41,12 @@ public class LogInController {
      * */
     @PostMapping("/auth")
     public @ResponseBody ResponseEntity<?> login(@RequestBody User user, HttpServletRequest request){
-        if(authenticationService.logIn(user)){
+        User loggedUser = authenticationService.logIn(user);
+        if(loggedUser != null && loggedUser.getPassword().equals(user.getPassword())) {
             String token = jwtService.generateToken(user);
             HttpSession session = request.getSession();
             session.setAttribute("token", token);
-            return ResponseEntity.ok(token);
+            return ResponseEntity.ok(new LoginSuccessfulDto(token, loggedUser.getUserType()));
         }
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }

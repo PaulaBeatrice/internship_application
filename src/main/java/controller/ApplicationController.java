@@ -20,7 +20,7 @@ public class ApplicationController {
     private ApplicationServiceInterface applicationServiceInterface;
 
     @PostMapping("add/application")
-    public @ResponseBody ResponseEntity<?> addAplication(@RequestBody Application application){
+    public @ResponseBody ResponseEntity<?> addApplication(@RequestBody Application application){
         try {
             applicationServiceInterface.addApplication(application);
             return ResponseEntity.ok(application);
@@ -29,9 +29,39 @@ public class ApplicationController {
         }
     }
 
-    @GetMapping("/get/applications/{userId}")
-    public @ResponseBody ResponseEntity<?> getApplications(@PathVariable Long userId) throws ServiceException {
-        List<Application> applications = applicationServiceInterface.getApplicationsByUser(userId);
+    @GetMapping("/get/application/{username}")
+    public @ResponseBody ResponseEntity<?> getApplications(@PathVariable String username) throws ServiceException {
+        List<Application> applications = applicationServiceInterface.getApplicationsByUser(username);
         return ResponseEntity.ok(applications);
+    }
+
+    @DeleteMapping("/delete/application/{applicationId}")
+    public @ResponseBody ResponseEntity<?> deleteApplication(@PathVariable Long applicationId) {
+        applicationServiceInterface.deleteApplication(applicationId);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/screening/application/{applicationId}")
+    public @ResponseBody ResponseEntity<?> updateApplicationToScreening(@PathVariable Long applicationId, @RequestBody Application application) throws ServiceException {
+        application.setId(applicationId);
+        return ResponseEntity.ok(applicationServiceInterface.updateApplication(application, Application.ApplicationStatus.SCREENING));
+    }
+
+    @PutMapping("/accepted/application/{applicationId}")
+    public @ResponseBody ResponseEntity<?> updateApplicationToAccepted(@PathVariable Long applicationId, @RequestBody Application application) throws ServiceException {
+        application.setId(applicationId);
+        return ResponseEntity.ok(applicationServiceInterface.updateApplication(application, Application.ApplicationStatus.ACCEPTED));
+    }
+
+    @PutMapping("/rejected/application/{applicationId}")
+    public @ResponseBody ResponseEntity<?> updateApplicationToRejected(@PathVariable Long applicationId, @RequestBody Application application) throws ServiceException {
+        application.setId(applicationId);
+        return ResponseEntity.ok(applicationServiceInterface.updateApplication(application, Application.ApplicationStatus.REJECTED));
+    }
+
+    @PutMapping("/retired/application/{applicationId}")
+    public @ResponseBody ResponseEntity<?> updateApplicationToRetired(@PathVariable Long applicationId, @RequestBody Application application) throws ServiceException {
+        application.setId(applicationId);
+        return ResponseEntity.ok(applicationServiceInterface.updateApplication(application, Application.ApplicationStatus.RETIRED));
     }
 }

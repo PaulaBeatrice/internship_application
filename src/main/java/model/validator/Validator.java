@@ -59,9 +59,6 @@ public class Validator {
         if (application.getApplicationDate() == null || application.getApplicationDate().isBefore(java.time.LocalDate.now())) {
             errorMessages.add("The application date must be today or a future date!");
         }
-        if (application.getStatus() == null) {
-            errorMessages.add("The application status cannot be null!");
-        }
 
         if (!errorMessages.isEmpty()) {
             throw new MyException(String.join("\n", errorMessages));

@@ -8,12 +8,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import service.interfaces.InternshipServiceInterface;
-import service.interfaces.UserServiceInterface;
 
 import java.util.List;
 
 @Controller
 @RequestMapping("/internship")
+@CrossOrigin
 public class InternshipController {
     @Autowired
     private InternshipServiceInterface internshipServiceInterface;
@@ -23,7 +23,7 @@ public class InternshipController {
      * @return ResponseEntity with a list of all internships or an empty list if none are found.
      */
     @GetMapping("/get/internships")
-    public @ResponseBody ResponseEntity<?> getQuizzes() {
+    public @ResponseBody ResponseEntity<?> getInternships() {
         List<Internship> internships = internshipServiceInterface.getAllInternships();
         return ResponseEntity.ok(internships);
     }
@@ -34,6 +34,16 @@ public class InternshipController {
             internshipServiceInterface.addInternship(internship);
             return ResponseEntity.ok(internship);
         } catch (MyException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\": \"" + e.getMessage() + "\"}");
+        }
+    }
+
+    @DeleteMapping("delete/internship/{internshipId}")
+    public @ResponseBody ResponseEntity<?> deleteInternship(@PathVariable Long internshipId){
+        try {
+            internshipServiceInterface.deleteInternship(internshipId);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\": \"" + e.getMessage() + "\"}");
         }
     }

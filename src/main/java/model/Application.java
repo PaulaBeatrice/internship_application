@@ -51,7 +51,9 @@ public class Application implements Serializable {
     // Enum for application status
     public enum ApplicationStatus {
         PENDING,
+        SCREENING,
         ACCEPTED,
-        REJECTED
+        RETIRED,
+        REJECTED,
     }
 }
